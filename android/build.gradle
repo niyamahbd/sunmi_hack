@@ -1,11 +1,30 @@
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.example.sunmi_print_app"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.sunmi_print_app"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
+        }
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+flutter {
+    source "../.."
 }
